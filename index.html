@@ -60,11 +60,6 @@
             align-items: center;
             gap: 12px;
         }
-        .brand-logo {
-            height: 46px;
-            width: auto;
-            object-fit: contain;
-        }
         .brand-title {
             font-weight: 900;
             font-size: 1.2rem;
@@ -192,6 +187,39 @@
             box-shadow: 2px 2px 0px var(--dark);
             background-color: #20ba5a;
             color: #ffffff;
+        }
+
+        /* Sección Personal Mariano Bono */
+        .personal-section {
+            padding: 40px 0 60px 0;
+            background: #ffffff;
+        }
+        .personal-card {
+            background: #ffffff;
+            border: 2px solid var(--dark);
+            border-radius: 18px;
+            padding: 35px 30px;
+            box-shadow: 6px 6px 0px var(--dark);
+            position: relative;
+        }
+        .personal-avatar-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--yellow);
+            border: 2px solid var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--dark);
+            flex-shrink: 0;
+            box-shadow: 3px 3px 0px var(--dark);
+        }
+        .personal-quote {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: #333;
         }
 
         /* Cómo Funciona */
@@ -325,6 +353,8 @@
             .hero { padding: 40px 0; text-align: center; }
             .hero p { margin-left: auto; margin-right: auto; }
             .card-form { text-align: left; }
+            .personal-card { text-align: center; }
+            .personal-avatar-icon { margin: 0 auto 15px auto; }
         }
     </style>
 </head>
@@ -334,7 +364,14 @@
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="logo.png" alt="Logo MB Remis Sunchales" class="brand-logo">
+                <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MB Remis Logo" style="height: 42px; width: auto;">
+                    <g fill="#121212">
+                        <path d="M125 240 C128 215 148 215 178 230 L178 280 C145 285 122 268 125 240 Z"/>
+                        <path d="M605 240 C602 215 582 215 552 230 L552 280 C585 285 608 268 605 240 Z"/>
+                        <path d="M255 140 C272 140 458 140 475 140 C510 140 548 240 565 295 C585 330 600 380 598 445 C596 485 596 575 578 577 C548 581 532 581 528 535 C526 510 522 508 495 508 L235 508 C208 508 204 510 202 535 C198 581 182 581 152 577 C134 575 134 485 132 445 C130 380 145 330 165 295 C182 240 220 140 255 140 Z M208 245 L522 245 C510 172 480 162 460 162 L270 162 C250 162 220 172 208 245 Z M160 405 C162 475 220 488 260 472 C265 440 220 400 160 405 Z M570 405 C568 475 510 488 470 472 C465 440 510 400 570 405 Z M285 432 L445 432 C452 432 455 445 448 466 L438 472 L292 472 L282 466 C275 445 278 432 285 432 Z M272 525 C272 518 280 518 290 518 L440 518 C450 518 458 518 458 525 C458 532 450 540 430 540 L300 540 C280 540 272 532 272 525 Z M172 515 C175 515 215 519 222 545 C200 553 175 547 172 515 Z M558 515 C555 515 515 519 508 545 C530 553 555 547 558 515 Z"/>
+                        <path d="M766 140 C690 140 654 204 654 290 C654 370 745 540 766 575 C787 540 878 370 878 290 C878 204 842 140 766 140 Z M766 415 C705 415 690 360 690 290 C690 220 705 188 766 188 C827 188 842 220 842 290 C842 360 827 415 766 415 Z"/>
+                    </g>
+                </svg>
                 <div class="brand-title">
                     MB REMIS
                     <span class="brand-subtitle">Servicio y Calidad</span>
@@ -411,8 +448,28 @@
         </div>
     </section>
 
+    <!-- SECCIÓN PERSONAL / MARIANO BONO -->
+    <section class="personal-section">
+        <div class="container">
+            <div class="personal-card">
+                <div class="d-md-flex align-items-center gap-4">
+                    <div class="personal-avatar-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div>
+                        <span class="text-uppercase fw-bold small text-muted" style="letter-spacing: 1px;">Atención Directa y Personalizada</span>
+                        <h4 class="fw-bold mb-2">Un viaje pensado a tu medida</h4>
+                        <p class="personal-quote mb-0">
+                            <strong>Hola, soy Mariano Bono</strong>, responsable de MB Remis. Mi prioridad en cada viaje es brindarte total <strong>comodidad, confianza y tranquilidad</strong>. Me adapto al tipo de viaje que prefieras: ya sea charlar en el camino, descansar en absoluto silencio o escuchar buena música para relajarte. Vos elegís cómo viajar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CÓMO PEDIR TU VIAJE -->
-    <section class="section-padding bg-white">
+    <section class="section-padding bg-white pt-0">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-bold">Pedir tu remis es muy fácil</h2>
