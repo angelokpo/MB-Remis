@@ -48,7 +48,7 @@
 
         /* Navbar */
         .navbar-custom {
-            padding: 14px 0;
+            padding: 10px 0;
             background: #ffffff;
             border-bottom: 2px solid var(--border-color);
             position: sticky;
@@ -58,22 +58,11 @@
         .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
         }
-        .brand-title {
-            font-weight: 900;
-            font-size: 1.2rem;
-            color: var(--dark);
-            line-height: 1.1;
-            display: flex;
-            flex-direction: column;
-        }
-        .brand-subtitle {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            color: #6c757d;
-            text-transform: uppercase;
+        .brand-logo-img {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
         }
         .btn-wa-header {
             background-color: var(--wa-green);
@@ -360,22 +349,11 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR CON TU LOGO COMPLETO -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MB Remis Logo" style="height: 42px; width: auto;">
-                    <g fill="#121212">
-                        <path d="M125 240 C128 215 148 215 178 230 L178 280 C145 285 122 268 125 240 Z"/>
-                        <path d="M605 240 C602 215 582 215 552 230 L552 280 C585 285 608 268 605 240 Z"/>
-                        <path d="M255 140 C272 140 458 140 475 140 C510 140 548 240 565 295 C585 330 600 380 598 445 C596 485 596 575 578 577 C548 581 532 581 528 535 C526 510 522 508 495 508 L235 508 C208 508 204 510 202 535 C198 581 182 581 152 577 C134 575 134 485 132 445 C130 380 145 330 165 295 C182 240 220 140 255 140 Z M208 245 L522 245 C510 172 480 162 460 162 L270 162 C250 162 220 172 208 245 Z M160 405 C162 475 220 488 260 472 C265 440 220 400 160 405 Z M570 405 C568 475 510 488 470 472 C465 440 510 400 570 405 Z M285 432 L445 432 C452 432 455 445 448 466 L438 472 L292 472 L282 466 C275 445 278 432 285 432 Z M272 525 C272 518 280 518 290 518 L440 518 C450 518 458 518 458 525 C458 532 450 540 430 540 L300 540 C280 540 272 532 272 525 Z M172 515 C175 515 215 519 222 545 C200 553 175 547 172 515 Z M558 515 C555 515 515 519 508 545 C530 553 555 547 558 515 Z"/>
-                        <path d="M766 140 C690 140 654 204 654 290 C654 370 745 540 766 575 C787 540 878 370 878 290 C878 204 842 140 766 140 Z M766 415 C705 415 690 360 690 290 C690 220 705 188 766 188 C827 188 842 220 842 290 C842 360 827 415 766 415 Z"/>
-                    </g>
-                </svg>
-                <div class="brand-title">
-                    MB REMIS
-                    <span class="brand-subtitle">Servicio y Calidad</span>
-                </div>
+                <img src="logo.png" alt="MB Remis Sunchales - Servicio y Calidad" class="brand-logo-img">
             </a>
             <div class="ms-auto d-flex align-items-center gap-3">
                 <a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="btn-wa-header">
