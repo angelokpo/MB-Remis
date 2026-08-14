@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MB Remis | Sunchales</title>
+    <meta name="description" content="Servicio de remis en Sunchales: viajes locales, larga distancia, traslados a aeropuertos y terminales, y encomiendas. Reservá tu viaje con anticipación.">
+    <meta property="og:title" content="MB Remis | Sunchales">
+    <meta property="og:description" content="Tu remis de confianza en Sunchales. Viajes locales, larga distancia y traslados especiales.">
+    <meta property="og:type" content="business.business">
+    <meta property="og:locale" content="es_AR">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.svg">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts con Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Datos estructurados -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TaxiService",
+        "name": "MB Remis",
+        "telephone": "+543493445886",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sunchales",
+            "addressRegion": "Santa Fe",
+            "addressCountry": "AR"
+        }
+    }
+    </script>
+
+    <style>
+        :root {
+            --navy: #1a3c6e;
+            --navy-dark: #0d1b2e;
+            --gold: #e0a336;
+            --light: #f7f5f0;
+        }
+
+        * { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #29303a;
+            background-color: #ffffff;
+            margin: 0;
+        }
+        h1, h2, h3, h4, .brand-word {
+            font-family: 'Poppins', sans-serif;
+        }
+        a { text-decoration: none !important; }
+
+        /* Navbar */
+        .navbar-mb {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background: transparent;
+            transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+        }
+        .navbar-mb.scrolled {
+            background: var(--navy-dark);
+            padding: 12px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        }
+        .navbar-mb .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 22px;
+            color: #ffffff !important;
+            letter-spacing: -0.5px;
+        }
+        .navbar-mb .nav-link {
+            color: #ffffff !important;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 12px;
+            opacity: 0.85;
+            transition: color 0.2s ease, opacity 0.2s ease;
+        }
+        .navbar-mb .nav-link:hover { opacity: 1; color: var(--gold) !important; }
+        .navbar-mb .btn-nav-call {
+            background: var(--gold);
+            color: #1a1a1a !important;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            padding: 9px 20px;
+            border-radius: 6px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .navbar-mb .btn-nav-call:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+        .brand-logo-svg { height: 32px; width: 32px; }
+
+        /* Mobile Nav fix */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: var(--navy-dark);
+                padding: 20px;
+                border-radius: 12px;
+                margin-top: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+            .navbar-mb .nav-link { margin: 8px 0; }
+        }
+
+        /* Hero */
+        .hero-split {
+            background: linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 100%);
+            padding: 170px 0 100px 0;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+        }
+        .hero-split .eyebrow {
+            color: var(--gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+        .hero-split h1 {
+            font-weight: 800;
+            font-size: 44px;
+            line-height: 1.15;
+            margin: 14px 0 20px 0;
+        }
+        .hero-split p {
+            font-size: 17px;
+            opacity: 0.85;
+            max-width: 480px;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #1a1a1a !important;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 15px 30px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(224,163,54,0.3);
+            transition: transform 0.25s ease;
+        }
+        .btn-gold:hover { transform: translateY(-3px); }
+        .phone-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .phone-chip i {
+            background: rgba(255,255,255,0.12);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .hero-art {
+            width: 100%;
+            max-width: 340px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .hero-art svg { width: 100%; height: auto; filter: drop-shadow(0 20px 35px rgba(0,0,0,0.35)); }
+
+        /* Pasos */
+        .pasos-section { padding: 90px 0 70px 0; background: var(--light); }
+        .paso {
+            text-align: center;
+            padding: 0 15px;
+        }
+        .paso .numero {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+        }
+        .paso h5 { font-weight: 700; font-size: 18px; margin-bottom: 10px; }
+        .paso p { font-size: 14px; color: #666; }
+
+        /* Servicios */
+        .servicios-rows { padding: 50px 0 90px 0; }
+        .servicio-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 35px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .servicio-row:last-child { border-bottom: none; }
+        .servicio-row .num {
+            font-family: 'Poppins', sans-serif;
+            font-size: 46px;
+            font-weight: 800;
+            color: #e2e5e9;
+            min-width: 80px;
+        }
+        .servicio-row .icon-circle {
+            width: 64px;
+            height: 64px;
+            min-width: 64px;
+            border-radius: 16px;
+            background: var(--navy);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .servicio-row h4 { font-weight: 700; font-size: 20px; margin-bottom: 6px; }
+        .servicio-row p { font-size: 14px; color: #666; margin-bottom: 0; }
+
+        /* Tipos de viaje */
+        .viajes-section {
+            background: var(--navy-dark);
+            padding: 90px 0;
+            color: #ffffff;
+            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+        }
+        .viajes-section .section-label {
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+        .chip-viaje {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px;
+            padding: 28px 20px;
+            text-align: center;
+            color: #ffffff;
+            display: block;
+            transition: all 0.25s ease;
+            height: 100%;
+        }
+        .chip-viaje:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #1a1a1a !important;
+            transform: translateY(-4px);
+        }
+        .chip-viaje i { font-size: 26px; margin-bottom: 12px; color: var(--gold); }
+        .chip-viaje:hover i { color: #1a1a1a; }
+        .chip-viaje h6 { font-weight: 700; font-size: 14px; margin: 0; }
+
+        /* Contacto */
+        .contacto-banner {
+            padding: 90px 0;
+            text-align: center;
+        }
+        .contacto-banner h2 { font-weight: 800; font-size: 34px; }
+        .contacto-banner p { color: #666; max-width: 500px; margin: 10px auto 30px auto; }
+        .contacto-banner .small-note {
+            font-size: 13px;
+            color: #999;
+            margin-top: 18px;
+        }
+
+        footer.footer-mb {
+            background: var(--navy-dark);
+            color: rgba(255,255,255,0.6);
+            padding: 24px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .btn-phone-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #ffffff !important;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.2s ease;
+        }
+        .btn-phone-float:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 767px) {
+            .hero-split { padding-top: 130px; text-align: center; clip-path: none; }
+            .hero-split p { margin: 0 auto; }
+            .servicio-row { flex-wrap: wrap; text-align: center; justify-content: center; }
+            .servicio-row .num { display: none; }
+            .viajes-section { clip-path: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-mb" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">
+                <svg class="brand-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo MB Remis">
+                    <circle cx="50" cy="50" r="48" fill="#e0a336"/>
+                    <circle cx="50" cy="50" r="40" fill="#1a3c6e"/>
+                    <ellipse cx="21" cy="45" rx="3.2" ry="2.6" fill="#ffffff"/>
+                    <ellipse cx="47" cy="45" rx="3.2" ry="2.6" fill="#ffffff"/>
+                    <path d="M25 44 L28 33 C29 31 30.5 30 32.5 30 L35.5 30 C37.5 30 39 31 40 33 L43 44 Z" fill="#ffffff"/>
+                    <path d="M28 34.5 L31 34.5 C31.6 34.5 32.1 34.8 32.4 35.4 L34.5 42 L23.5 42 Z" fill="#1a3c6e"/>
+                    <path d="M40 34.5 L37 34.5 C36.4 34.5 35.9 34.8 35.6 35.4 L33.5 42 L44.5 42 Z" fill="#1a3c6e"/>
+                    <rect x="19" y="43" width="30" height="24" rx="5" fill="#ffffff"/>
+                    <rect x="18" y="62" width="8" height="9" rx="3" fill="#ffffff"/>
+                    <rect x="42" y="62" width="8" height="9" rx="3" fill="#ffffff"/>
+                    <path d="M23 49 L28 49 C29 49 29.5 49.7 29 50.6 L27.5 53 C27 53.7 26 54.1 25 53.8 L22.5 53 C21.7 52.7 21.5 51.8 22 51 Z" fill="#1a3c6e"/>
+                    <path d="M45 49 L40 49 C39 49 38.5 49.7 39 50.6 L40.5 53 C41 53.7 42 54.1 43 53.8 L45.5 53 C46.3 52.7 46.5 51.8 46 51 Z" fill="#1a3c6e"/>
+                    <rect x="30" y="50" width="8" height="3" rx="1.3" fill="#1a3c6e"/>
+                    <path d="M23 59 L27 59 C27.8 59 28.2 59.6 28 60.4 L27.4 62.4 C27.2 63 26.6 63.4 26 63.2 L23 62.3 C22.4 62.1 22 61.5 22.2 60.9 Z" fill="#1a3c6e"/>
+                    <path d="M45 59 L41 59 C40.2 59 39.8 59.6 40 60.4 L40.6 62.4 C40.8 63 41.4 63.4 42 63.2 L45 62.3 C45.6 62.1 46 61.5 45.8 60.9 Z" fill="#1a3c6e"/>
+                    <rect x="27" y="58.5" width="14" height="2.4" rx="1.2" fill="#1a3c6e"/>
+                    <path d="M62 40 A11.5 11.5 0 1 1 85 40 C85 49 78.5 55 73.5 71 C68.5 55 62 49 62 40 Z" fill="#ffffff"/>
+                    <circle cx="73.5" cy="40" r="5.5" fill="#1a3c6e"/>
+                </svg>
+                <span class="brand-word">MB REMIS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Abrir menú de navegación" style="background:#fff;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center text-center">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#viajes">Viajes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item mt-2 mt-lg-0"><a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener" class="btn-nav-call"><i class="fab fa-whatsapp me-1" aria-hidden="true"></i> WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="inicio" class="hero-split">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="eyebrow">Remis en Sunchales</div>
+                    <h1>Te llevamos donde <span style="color: var(--gold);">necesites</span> llegar</h1>
+                    <p>Viajes locales, larga distancia, traslados a terminales y aeropuertos, y encomiendas. Reservá tu viaje con anticipación y te lo confirmamos al instante.</p>
+                    <a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener" class="btn-gold"><i class="fab fa-whatsapp" aria-hidden="true"></i> Pedir un Remis</a>
+                    <div class="phone-chip">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        <a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener" style="color:#fff;">3493 44-5886</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-art">
+                        <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de auto de remis">
+                            <ellipse cx="150" cy="195" rx="120" ry="14" fill="rgba(0,0,0,0.25)"/>
+                            <path d="M40 150 L55 95 C60 78 75 68 95 68 L205 68 C225 68 240 78 245 95 L260 150 L260 175 C260 182 254 188 247 188 L235 188 C228 188 222 182 222 175 L222 168 L78 168 L78 175 C78 182 72 188 65 188 L53 188 C46 188 40 182 40 175 Z" fill="#e0a336"/>
+                            <path d="M85 95 L100 70 L200 70 L215 95 Z" fill="#1a3c6e" opacity="0.85"/>
+                            <circle cx="88" cy="175" r="24" fill="#0d1b2e"/>
+                            <circle cx="88" cy="175" r="10" fill="#e0a336"/>
+                            <circle cx="212" cy="175" r="24" fill="#0d1b2e"/>
+                            <circle cx="212" cy="175" r="10" fill="#e0a336"/>
+                            <rect x="60" y="128" width="180" height="8" rx="4" fill="#ffffff" opacity="0.5"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cómo pedís tu viaje -->
+    <section class="pasos-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="paso">
+                        <div class="numero">1</div>
+                        <h5>Contactanos</h5>
+                        <p>Escribinos por WhatsApp o llamanos contándonos origen, destino y horario.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="paso">
+                        <div class="numero">2</div>
+                        <h5>Coordinamos</h5>
+                        <p>Te confirmamos disponibilidad y acordamos los detalles al instante.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="paso">
+                        <div class="numero">3</div>
+                        <h5>Te buscamos</h5>
+                        <p>Llegamos puntuales al lugar indicado para llevarte directo a destino.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="servicios-rows">
+        <div class="container">
+            <div class="servicio-row">
+                <div class="num">01</div>
+                <div class="icon-circle"><i class="fas fa-city" aria-hidden="true"></i></div>
+                <div>
+                    <h4>Viajes Locales</h4>
+                    <p>Traslados dentro de Sunchales, rápidos y puntuales para tus actividades diarias.</p>
+                </div>
+            </div>
+            <div class="servicio-row">
+                <div class="num">02</div>
+                <div class="icon-circle"><i class="fas fa-road" aria-hidden="true"></i></div>
+                <div>
+                    <h4>Larga Distancia</h4>
+                    <p>Viajes a otras localidades y ciudades en un vehículo cómodo y equipado.</p>
+                </div>
+            </div>
+            <div class="servicio-row">
+                <div class="num">03</div>
+                <div class="icon-circle"><i class="fas fa-plane-departure" aria-hidden="true"></i></div>
+                <div>
+                    <h4>Aeropuertos y Terminales</h4>
+                    <p>Traslados programados con puntualidad para que nunca pierdas una conexión.</p>
+                </div>
+            </div>
+            <div class="servicio-row">
+                <div class="num">04</div>
+                <div class="icon-circle"><i class="fas fa-box" aria-hidden="true"></i></div>
+                <div>
+                    <h4>Encomiendas</h4>
+                    <p>Envío seguro y rápido de paquetes y trámites documentales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tipos de viaje -->
+    <section id="viajes" class="viajes-section">
+        <div class="container text-center">
+            <div class="section-label">Elegí tu viaje</div>
+            <h2 class="fw-bold mb-5" style="font-size: 32px;">Tipos de Viaje</h2>
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener" class="chip-viaje">
+                        <i class="fas fa-car-side" aria-hidden="true"></i>
+                        <h6>Viajes Cortos</h6>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener" class="chip-viaje">
+                        <i class="fas fa-suitcase-rolling" aria-hidden="true"></i>
+                        <h6>Turismo</h6>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener" class="chip-viaje">
+                        <i class="fas fa-briefcase" aria-hidden="true"></i>
+                        <h6>Empresariales</h6>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener" class="chip-viaje">
+                        <i class="fas fa-glass-cheers" aria-hidden="true"></i>
+                        <h6>Eventos Especiales</h6>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contacto-banner">
+        <div class="container">
+            <h2>¿Necesitás un viaje?</h2>
+            <p>Escribinos y coordinamos el horario que mejor te quede. Trabajamos con reservas previas.</p>
+            <a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener" class="btn-gold"><i class="fab fa-whatsapp" aria-hidden="true"></i> 3493 44-5886</a>
+            <div class="small-note">Sunchales, Santa Fe, Argentina</div>
+        </div>
+    </section>
+
+    <footer class="footer-mb">
+        &copy; 2026 MB Remis. Todos los derechos reservados. Sunchales, Santa Fe.
+    </footer>
+
+    <!-- Botón flotante WhatsApp -->
+    <a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20reservar%20un%20viaje" target="_blank" rel="noopener" class="btn-phone-float" title="Escribir por WhatsApp" aria-label="Escribir por WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Efecto scroll en Navbar
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 60) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Cierre automático del menú móvil al hacer click en un enlace
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link, .navbar-nav .btn-nav-call');
+        const menuCollapse = document.getElementById('navbarNav');
+        const bsCollapse = new bootstrap.Collapse(menuCollapse, { toggle: false });
+        navLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (menuCollapse.classList.contains('show')) {
+                    bsCollapse.hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
