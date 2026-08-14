@@ -110,14 +110,15 @@
             opacity: 0.95;
         }
         
-        /* Logo SVG */
-        .brand-logo-svg { 
-            height: 34px; 
+        /* Logo PNG con filtro de color dorado */
+        .brand-logo-img {
+            height: 38px;
             width: auto;
-            fill: var(--gold); 
+            display: block;
+            filter: invert(72%) sepia(50%) saturate(600%) hue-rotate(5deg) brightness(95%) contrast(90%);
             transition: transform 0.2s ease;
         }
-        .navbar-brand:hover .brand-logo-svg {
+        .navbar-brand:hover .brand-logo-img {
             transform: scale(1.05);
         }
 
@@ -329,13 +330,7 @@
     <nav class="navbar navbar-expand-lg navbar-mb" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#inicio">
-                <!-- Nuevo Isotipo SVG: Auto + Pin de Ubicación -->
-                <svg class="brand-logo-svg" viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo MB Remis">
-                    <!-- Pin de ubicación -->
-                    <path d="M 125,5 C 109,5 96,18 96,34 C 96,55 125,95 125,95 C 125,95 154,55 154,34 C 154,18 141,5 125,5 Z M 125,47 C 117.8,47 112,41.2 112,34 C 112,26.8 117.8,21 125,21 C 132.2,21 138,26.8 138,34 C 138,41.2 132.2,47 125,47 Z" />
-                    <!-- Auto de frente -->
-                    <path d="M 33,6 C 25,6 18,17 14,33 L 13,33 C 9.5,33 6.5,35.5 6,39 L 5,46 C 4.5,50 7.5,53 11,53 L 11.2,53 C 9,60 8,68 8,82 L 8,100 C 8,104 11,107 15,107 L 24,107 C 28,107 31,104 31,100 L 31,96 L 63,96 L 63,100 C 63,104 66,107 70,107 L 79,107 C 83,107 86,104 86,100 L 86,82 C 86,68 85,60 82.8,53 L 83,53 C 86.5,53 89.5,50 89,46 L 88,39 C 87.5,35.5 84.5,33 81,33 L 80,33 C 76,17 69,6 61,6 Z M 34,13 L 60,13 C 65,13 69,21 72,33 L 22,33 C 25,21 29,13 34,13 Z M 16,56 C 21,56 29,57 32,69 C 27,70 15,67 13,63 C 12,60 13,56 16,56 Z M 78,56 C 81,56 82,60 81,63 C 79,67 67,70 62,69 C 65,57 73,56 78,56 Z M 37,63 L 57,63 C 60,63 61,65 60,68 L 58,72 C 57,74 55,75 53,75 L 41,75 C 39,75 37,74 36,72 L 34,68 C 33,65 34,63 37,63 Z M 34,84 L 60,84 C 63,84 65,86 65,88 C 65,90 63,91 60,91 L 34,91 C 31,91 29,90 29,88 C 29,86 31,84 34,84 Z M 19,83 C 24,83 27,87 27,91 C 24,93 16,92 14,88 C 14,85 16,83 19,83 Z M 75,83 C 78,83 80,85 80,88 C 78,92 70,93 67,91 C 67,87 70,83 75,83 Z" />
-                </svg>
+                <img src="logo.png" alt="MB Remis Logo" class="brand-logo-img">
                 <span class="brand-word">MB REMIS</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Abrir menú de navegación" style="background:#fff;">
