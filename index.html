@@ -40,7 +40,7 @@
             background-color: #ffffff;
         }
 
-        h1, h2, h3, h4, .brand-text {
+        h1, h2, h3, h4, .brand-title {
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -48,7 +48,7 @@
 
         /* Navbar */
         .navbar-custom {
-            padding: 10px 0;
+            padding: 12px 0;
             background: #ffffff;
             border-bottom: 2px solid var(--border-color);
             position: sticky;
@@ -58,11 +58,30 @@
         .navbar-brand {
             display: flex;
             align-items: center;
+            gap: 12px;
         }
         .brand-logo-img {
-            height: 52px;
+            height: 48px;
             width: auto;
             object-fit: contain;
+            display: block;
+        }
+        .brand-title {
+            font-weight: 900;
+            font-size: 1.25rem;
+            color: var(--dark);
+            line-height: 1.1;
+            display: flex;
+            flex-direction: column;
+            letter-spacing: -0.5px;
+        }
+        .brand-subtitle {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #6c757d;
+            text-transform: uppercase;
+            margin-top: 2px;
         }
         .btn-wa-header {
             background-color: var(--wa-green);
@@ -349,11 +368,15 @@
 </head>
 <body>
 
-    <!-- NAVBAR CON TU LOGO COMPLETO -->
+    <!-- NAVBAR CON LOGO Y NOMBRE JUNTOS -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="logo.png" alt="MB Remis Sunchales - Servicio y Calidad" class="brand-logo-img">
+                <img src="logo.png" alt="Logo MB Remis" class="brand-logo-img">
+                <div class="brand-title">
+                    MB REMIS
+                    <span class="brand-subtitle">Servicio y Calidad</span>
+                </div>
             </a>
             <div class="ms-auto d-flex align-items-center gap-3">
                 <a href="https://wa.me/5493493445886?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="btn-wa-header">
