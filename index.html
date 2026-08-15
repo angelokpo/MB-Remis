@@ -135,7 +135,7 @@
             max-width: 500px;
         }
 
-        /* Contenedor e imagen del Auto en el Hero */
+        /* Contenedor Auto */
         .hero-car-wrapper {
             margin-top: 28px;
             position: relative;
@@ -205,6 +205,7 @@
             gap: 10px;
             box-shadow: 4px 4px 0px var(--dark);
             transition: all 0.15s ease;
+            cursor: pointer;
         }
         .btn-enviar-viaje:hover {
             transform: translate(2px, 2px);
@@ -246,7 +247,7 @@
             color: #333;
         }
 
-        /* Cómo Funciona */
+        /* Pasos */
         .section-padding {
             padding: 80px 0;
         }
@@ -336,6 +337,61 @@
             font-size: 1.05rem;
             max-width: 500px;
             margin: 0 auto 28px auto;
+        }
+
+        /* Sección de Comentarios */
+        .rating-stars {
+            display: inline-flex;
+            flex-direction: row-reverse;
+            gap: 6px;
+        }
+        .rating-stars input {
+            display: none;
+        }
+        .rating-stars label {
+            font-size: 1.8rem;
+            color: #d1d5db;
+            cursor: pointer;
+            transition: color 0.15s ease, transform 0.15s ease;
+        }
+        .rating-stars label:hover,
+        .rating-stars label:hover ~ label,
+        .rating-stars input:checked ~ label {
+            color: var(--yellow);
+        }
+        .rating-stars label:hover {
+            transform: scale(1.15);
+        }
+        .btn-comentar {
+            background-color: var(--dark);
+            color: var(--yellow);
+            font-weight: 800;
+            font-size: 0.95rem;
+            border: 2px solid var(--dark);
+            border-radius: 10px;
+            padding: 12px 24px;
+            transition: all 0.15s ease;
+        }
+        .btn-comentar:hover {
+            background-color: var(--yellow);
+            color: var(--dark);
+            box-shadow: 4px 4px 0px var(--dark);
+        }
+        .comentario-item {
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+        }
+        .comentario-item:hover {
+            border-color: var(--dark);
+            box-shadow: 4px 4px 0px var(--yellow);
+        }
+        .comentario-stars {
+            color: var(--yellow);
+            font-size: 0.9rem;
         }
 
         /* Footer */
@@ -444,20 +500,20 @@
                         
                         <form onsubmit="enviarMensajeWa(event)">
                             <div class="mb-3">
-                                <label class="form-label">Dirección de salida</label>
+                                <label class="form-label" for="origen">Dirección de salida</label>
                                 <input type="text" id="origen" class="form-control form-control-custom" placeholder="Ej: Tu casa, trabajo o barrio" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Destino</label>
+                                <label class="form-label" for="destino">Destino</label>
                                 <input type="text" id="destino" class="form-control form-control-custom" placeholder="Ej: Rafaela, Centro, Terminal..." required>
                             </div>
                             <div class="row g-2 mb-4">
                                 <div class="col-6">
-                                    <label class="form-label">Fecha</label>
+                                    <label class="form-label" for="fecha">Fecha</label>
                                     <input type="text" id="fecha" class="form-control form-control-custom" placeholder="Ej: Hoy / Mañana">
                                 </div>
                                 <div class="col-6">
-                                    <label class="form-label">Horario</label>
+                                    <label class="form-label" for="hora">Horario</label>
                                     <input type="text" id="hora" class="form-control form-control-custom" placeholder="Ej: 16:30 hs">
                                 </div>
                             </div>
@@ -579,6 +635,69 @@
         </div>
     </section>
 
+    <!-- SECCIÓN DE COMENTARIOS CON FIREBASE -->
+    <section class="section-padding" style="background-color: var(--light-bg); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge-slogan mb-2"><i class="fas fa-star"></i> Opiniones reales</span>
+                <h2 class="fw-bold">Experiencias de Pasajeros</h2>
+                <p class="text-muted">Si viajaste con MB Remis, dejanos tu calificación y comentario sobre el servicio.</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Formulario -->
+                <div class="col-lg-5">
+                    <div class="card-form">
+                        <h3 class="mb-1">Dejar una opinión</h3>
+                        <p class="small text-muted mb-3">Tu opinión ayuda a mantener la calidad en cada viaje.</p>
+
+                        <form id="commentForm">
+                            <div class="mb-3">
+                                <label class="form-label" for="nombreUsuario">Tu Nombre / Apellido</label>
+                                <input type="text" id="nombreUsuario" class="form-control form-control-custom" placeholder="Ej: María Gómez" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label d-block mb-1">Calificación</label>
+                                <div class="rating-stars">
+                                    <input type="radio" name="estrellas" id="star5" value="5" required><label for="star5" title="5 estrellas"><i class="fas fa-star"></i></label>
+                                    <input type="radio" name="estrellas" id="star4" value="4"><label for="star4" title="4 estrellas"><i class="fas fa-star"></i></label>
+                                    <input type="radio" name="estrellas" id="star3" value="3"><label for="star3" title="3 estrellas"><i class="fas fa-star"></i></label>
+                                    <input type="radio" name="estrellas" id="star2" value="2"><label for="star2" title="2 estrellas"><i class="fas fa-star"></i></label>
+                                    <input type="radio" name="estrellas" id="star1" value="1"><label for="star1" title="1 estrella"><i class="fas fa-star"></i></label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="textoComentario">Tu Comentario</label>
+                                <textarea id="textoComentario" class="form-control form-control-custom" rows="3" placeholder="Contanos qué tal fue tu viaje..." required></textarea>
+                            </div>
+
+                            <button type="submit" id="btnSubmitComentario" class="btn btn-comentar w-100">
+                                <i class="fas fa-paper-plane me-2"></i> Publicar Comentario
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Lista de comentarios -->
+                <div class="col-lg-7">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="fw-bold mb-0">Comentarios publicados</h4>
+                        <span id="contadorComentarios" class="badge bg-dark text-warning px-3 py-2 rounded-pill">Cargando...</span>
+                    </div>
+
+                    <div id="contenedorComentarios">
+                        <div class="comentario-item text-center py-4 text-muted">
+                            <div class="spinner-border spinner-border-sm text-dark mb-2" role="status"></div>
+                            <p class="mb-0">Cargando opiniones en tiempo real...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -604,6 +723,146 @@
             const texto = `Hola MB Remis! Quisiera consultar por un viaje:%0A- *Salida:* ${encodeURIComponent(origen)}%0A- *Destino:* ${encodeURIComponent(destino)}%0A- *Fecha:* ${encodeURIComponent(fecha)}%0A- *Horario:* ${encodeURIComponent(hora)}`;
 
             window.open(`https://wa.me/5493493445886?text=${texto}`, '_blank');
+        }
+    </script>
+
+    <!-- FIREBASE SDK (Módulos ES6) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // CONFIGURACIÓN DE TU PROYECTO FIREBASE
+        const firebaseConfig = {
+            apiKey: "AIzaSyAieJ_ProqFBEtvOhEjU-wvbv8s9fxee-g",
+            authDomain: "mb-remis.firebaseapp.com",
+            projectId: "mb-remis",
+            storageBucket: "mb-remis.firebasestorage.app",
+            messagingSenderId: "329783207692",
+            appId: "1:329783207692:web:8ca4b49d2c2aefb32b0b29",
+            measurementId: "G-MPCZ1R226M"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const comentariosRef = collection(db, "comentarios");
+
+        const contenedor = document.getElementById('contenedorComentarios');
+        const contador = document.getElementById('contadorComentarios');
+        const commentForm = document.getElementById('commentForm');
+        const btnSubmit = document.getElementById('btnSubmitComentario');
+
+        // Escuchar comentarios en tiempo real ordenados por fecha descendente
+        const q = query(comentariosRef, orderBy("fechaCreacion", "desc"));
+
+        onSnapshot(q, (snapshot) => {
+            const cantidad = snapshot.size;
+            contador.textContent = `${cantidad} ${cantidad === 1 ? 'opinión' : 'opiniones'}`;
+
+            if (snapshot.empty) {
+                contenedor.innerHTML = `
+                    <div class="comentario-item text-center py-4 text-muted">
+                        <i class="fas fa-comment-dots fs-2 text-secondary mb-2 d-block"></i>
+                        <p class="mb-0 fw-bold">Todavía no hay comentarios.</p>
+                        <small>Sé el primero en calificar el servicio completando el formulario.</small>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            snapshot.forEach((doc) => {
+                const c = doc.data();
+                let estrellasHtml = '';
+                for (let i = 1; i <= 5; i++) {
+                    estrellasHtml += i <= c.calificacion 
+                        ? '<i class="fas fa-star"></i> ' 
+                        : '<i class="far fa-star text-muted"></i> ';
+                }
+
+                const fechaStr = c.fechaFormato || 'Reciente';
+
+                html += `
+                    <div class="comentario-item">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="fw-bold mb-0 text-dark">${escaparHtml(c.nombre)}</h5>
+                            <span class="small text-muted">${fechaStr}</span>
+                        </div>
+                        <div class="comentario-stars mb-2">
+                            ${estrellasHtml}
+                            <span class="text-dark small fw-bold ms-1">(${c.calificacion}/5)</span>
+                        </div>
+                        <p class="mb-0 text-secondary" style="font-size: 0.95rem; line-height: 1.5;">${escaparHtml(c.texto)}</p>
+                    </div>
+                `;
+            });
+
+            contenedor.innerHTML = html;
+        }, (error) => {
+            console.error("Error al obtener comentarios:", error);
+            contenedor.innerHTML = `
+                <div class="comentario-item text-center py-4 text-danger">
+                    <p class="mb-0 fw-bold">No se pudieron cargar las opiniones.</p>
+                    <small>Verificá las reglas de lectura en Firestore.</small>
+                </div>
+            `;
+            contador.textContent = "Error";
+        });
+
+        // Guardar comentario en Firestore
+        commentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Verificación para no duplicar desde el mismo navegador
+            if (localStorage.getItem('mb_remis_ya_opino') === 'true') {
+                alert('Ya has registrado una opinión desde este dispositivo.');
+                return;
+            }
+
+            const nombre = document.getElementById('nombreUsuario').value.trim();
+            const texto = document.getElementById('textoComentario').value.trim();
+            const estrellaSeleccionada = document.querySelector('input[name="estrellas"]:checked');
+
+            if (!nombre || !texto || !estrellaSeleccionada) {
+                alert('Por favor, completá todos los campos y seleccioná una calificación.');
+                return;
+            }
+
+            const calificacion = parseInt(estrellaSeleccionada.value, 10);
+            const fechaHoy = new Date().toLocaleDateString('es-AR', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric'
+            });
+
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span> Publicando...`;
+
+            try {
+                await addDoc(comentariosRef, {
+                    nombre: nombre,
+                    calificacion: calificacion,
+                    texto: texto,
+                    fechaFormato: fechaHoy,
+                    fechaCreacion: serverTimestamp()
+                });
+
+                localStorage.setItem('mb_remis_ya_opino', 'true');
+                commentForm.reset();
+                alert('¡Muchas gracias por tu calificación!');
+            } catch (err) {
+                console.error("Error al guardar comentario:", err);
+                alert('Hubo un error al enviar tu comentario. Verificá las reglas de Firebase.');
+            } finally {
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = `<i class="fas fa-paper-plane me-2"></i> Publicar Comentario`;
+            }
+        });
+
+        function escaparHtml(cadena) {
+            const div = document.createElement('div');
+            div.textContent = cadena;
+            return div.innerHTML;
         }
     </script>
 </body>
