@@ -395,14 +395,79 @@
         }
 
         /* Footer */
-        footer {
-            background-color: #ffffff;
-            border-top: 1px solid var(--border-color);
-            padding: 28px 0;
+        .site-footer {
+            background: var(--dark);
+            color: #cfcfcf;
+            border-top: 3px solid var(--yellow);
+        }
+        .footer-inner {
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 36px 20px 30px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 30px;
+        }
+        .footer-brand { display: flex; align-items: center; }
+        .footer-logo {
+            height: 56px;
+            width: auto;
+            object-fit: contain;
+            border: 2px solid var(--dark);
+            border-radius: 10px;
+            box-shadow: 3px 3px 0px var(--yellow);
+            background: #ffffff;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .footer-heading {
+            color: var(--yellow);
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .footer-social { display: flex; gap: 12px; }
+        .footer-social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            transition: all 0.2s;
+        }
+        .footer-social-btn:hover {
+            background: var(--yellow);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 20px;
             text-align: center;
-            color: #777;
-            font-size: 0.88rem;
-            font-weight: 500;
+        }
+        .footer-bottom p { font-size: 0.75rem; color: #9a9a9a; }
+        .footer-bottom .footer-credit { margin-top: 4px; font-size: 0.68rem; color: #6b6b6b; }
+        .footer-credit a {
+            color: #6b6b6b;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.2s;
+        }
+        .footer-credit a:hover { color: var(--yellow); }
+        @media (max-width: 768px) {
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                padding: 32px 20px 24px;
+                justify-items: center;
+                text-align: center;
+            }
         }
 
         /* Botón Flotante */
@@ -699,9 +764,23 @@
     </section>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p class="mb-0"><strong>MB Remis</strong> &bull; Sunchales, Santa Fe &bull; Servicio y Calidad &copy; 2026</p>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="logo.png" alt="MB Remis" class="footer-logo">
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-heading">Contáctame</h4>
+                <div class="footer-social">
+                    <a href="https://wa.me/5493493445886?text=Hola%20MB%20Remis%2C%20quisiera%20consultar%20por%20un%20viaje" target="_blank" rel="noopener" class="footer-social-btn" aria-label="WhatsApp de MB Remis">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="footerYear"></span> MB Remis · Sunchales, Santa Fe · Servicio y Calidad</p>
+            <p class="footer-credit">Hecho por <a href="https://www.instagram.com/angelodanna_" target="_blank" rel="noopener">Ángelo Danna</a></p>
         </div>
     </footer>
 
@@ -712,6 +791,7 @@
 
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>document.getElementById('footerYear').textContent = new Date().getFullYear();</script>
     <script>
         function enviarMensajeWa(e) {
             e.preventDefault();
