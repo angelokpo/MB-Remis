@@ -1,0 +1,33 @@
+rules_version = '2';
+
+// Reglas de Firestore para mbremis.com.ar
+// - Cualquiera puede leer las opiniones y dejar una nueva.
+// - Toda opinión nueva entra con aprobado == false; se aprueba desde la consola de Firebase.
+// - Desde el sitio nadie puede editar ni borrar opiniones.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /comentarios/{comentarioId} {
+      allow read: if true;
+
+      allow create: if
+        request.resource.data.keys().hasOnly(['nombre', 'calificacion', 'texto', 'fechaFormato', 'fechaCreacion', 'aprobado'])
+        && request.resource.data.keys().hasAll(['nombre', 'calificacion', 'texto', 'fechaFormato', 'fechaCreacion', 'aprobado'])
+        && request.resource.data.aprobado == false
+        && request.resource.data.nombre is string
+        && request.resource.data.nombre.size() > 0
+        && request.resource.data.nombre.size() <= 60
+        && request.resource.data.texto is string
+        && request.resource.data.texto.size() > 0
+        && request.resource.data.texto.size() <= 800
+        && request.resource.data.calificacion is int
+        && request.resource.data.calificacion >= 1
+        && request.resource.data.calificacion <= 5
+        && request.resource.data.fechaFormato is string
+        && request.resource.data.fechaFormato.size() <= 30
+        && request.resource.data.fechaCreacion == request.time;
+
+      allow update, delete: if false;
+    }
+  }
+}
