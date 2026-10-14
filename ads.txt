@@ -1,4 +1,1 @@
-# ads.txt de mbremis.com.ar
-# Cuando AdSense apruebe la cuenta, reemplazar la línea de abajo por la que da AdSense
-# (Sitios > mbremis.com.ar > ads.txt), quitándole el "#" del principio:
-# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+google.com, pub-1961773343491211, DIRECT, f08c47fec0942fa0
